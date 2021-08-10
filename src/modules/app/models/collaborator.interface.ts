@@ -26,6 +26,6 @@ export interface ICollaborator {
   phone: string;
   validation: Validation;
   knowledge: Knowledge[];
-  validationDate: Date;
+  validationDate?: Date;
   createdAt?: Date;
 }
