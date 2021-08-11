@@ -2,7 +2,7 @@ import {
   KnowledgeArray,
   Validation,
   ValidationArray,
-} from 'src/modules/app/models/collaborator.interface';
+} from '../../app/models/collaborator.interface';
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
 export class CreateCollaboratorTable1628635015455
