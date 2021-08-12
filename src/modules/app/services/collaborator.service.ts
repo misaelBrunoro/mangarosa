@@ -31,6 +31,8 @@ export class CollaboratorService {
       collaborator = await this.collaboratorRepository.create(body);
     }
 
+    await this.collaboratorRepository.save(collaborator);
+
     if (!collaborator) throw new NotFoundException();
 
     return collaborator;

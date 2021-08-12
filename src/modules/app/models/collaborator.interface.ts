@@ -24,7 +24,7 @@ export interface ICollaborator {
   email: string;
   cpf: string;
   phone: string;
-  validation: Validation;
+  validation?: Validation;
   knowledge: Knowledge[];
   validationDate?: Date;
   createdAt?: Date;

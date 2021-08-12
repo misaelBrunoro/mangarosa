@@ -51,10 +51,7 @@ export class Collaborator implements ICollaborator {
   @ApiProperty({ type: 'string' })
   validation: Validation;
 
-  @Column({
-    type: 'enum',
-    enum: KnowledgeArray,
-  })
+  @Column('simple-array', { array: true })
   @ApiProperty({ type: 'string', isArray: true })
   knowledge: Knowledge[];
 

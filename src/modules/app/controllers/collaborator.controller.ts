@@ -51,7 +51,7 @@ export class CollaboratorController {
     return this.collaboratorService.store(body);
   }
 
-  @Delete()
+  @Delete(':id')
   @ApiNoContentResponse()
   @ApiOperation({ summary: '' })
   public async destroy(@Param('id', ParseIntPipe) id: number): Promise<void> {

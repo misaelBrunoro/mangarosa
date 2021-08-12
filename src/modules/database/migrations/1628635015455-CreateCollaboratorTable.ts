@@ -45,13 +45,12 @@ export class CreateCollaboratorTable1628635015455
           },
           {
             name: 'knowledge',
-            type: 'enum',
-            enum: KnowledgeArray,
-            enumName: 'knowledge_col_enum',
+            type: 'varchar(1000)',
           },
           {
             name: 'validationDate',
             type: 'timestamp',
+            isNullable: true,
           },
           {
             name: 'createdAt',

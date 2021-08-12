@@ -1,12 +1,18 @@
 import { ApiProperty } from '@nestjs/swagger';
 import {
+  ArrayMinSize,
+  IsArray,
   IsDate,
+  IsEmail,
+  IsEnum,
   IsIn,
   IsInt,
   IsNotEmpty,
   IsOptional,
   IsString,
+  MaxLength,
   Min,
+  MinLength,
 } from 'class-validator';
 import {
   Knowledge,
@@ -33,33 +39,42 @@ export class CollaboratorValidator {
   @ApiProperty({ required: true, type: 'string', minLength: 3, maxLength: 50 })
   @IsString()
   @IsNotEmpty()
+  @MinLength(3)
+  @MaxLength(50)
+  @IsEmail()
   public email: string;
 
-  @ApiProperty({ required: true, type: 'string', minLength: 3, maxLength: 50 })
+  @ApiProperty({ required: true, type: 'string', minLength: 14, maxLength: 14 })
   @IsString()
   @IsNotEmpty()
+  @MinLength(14)
+  @MaxLength(14)
   public cpf: string;
 
-  @ApiProperty({ required: true, type: 'string', minLength: 3, maxLength: 50 })
+  @ApiProperty({ required: true, type: 'string', minLength: 9, maxLength: 11 })
   @IsString()
   @IsNotEmpty()
+  @MinLength(9)
+  @MaxLength(11)
   public phone: string;
 
+  @IsOptional()
   @IsString()
   @IsIn(ValidationArray)
   @ApiProperty({
-    required: true,
+    required: false,
     enum: ValidationArray,
   })
-  public validation: Validation;
+  public validation?: Validation;
 
-  @IsString()
-  @IsIn(KnowledgeArray)
+  @IsArray()
+  @IsEnum(KnowledgeArray, { each: true })
   @ApiProperty({
     required: true,
     isArray: true,
     enum: KnowledgeArray,
   })
+  @ArrayMinSize(3)
   public knowledge: Knowledge[];
 
   @IsOptional()
