@@ -12,11 +12,9 @@ export enum Validation {
   notValidated = 'notValidated',
 }
 
-export const ValidationArray = [Validation.validated, Validation.notValidated];
+export const ValidationArray = Object.values(Validation);
 
-export const KnowledgeArray = Object.keys(Knowledge).map(
-  (key) => Knowledge[key],
-);
+export const KnowledgeArray = Object.values(Knowledge);
 
 export interface ICollaborator {
   id?: number;
