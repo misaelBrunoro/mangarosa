@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { ICollaborator } from '../models/collaborator.interface';
+import { ICollaborator, Validation } from '../models/collaborator.interface';
 import { Collaborator } from '../models/collaborator.model';
 
 @Injectable()
@@ -12,7 +12,10 @@ export class CollaboratorService {
   ) {}
 
   public async index(): Promise<Collaborator[]> {
-    return this.collaboratorRepository.find();
+    return this.collaboratorRepository
+      .createQueryBuilder('collaborator')
+      .orderBy('name', 'ASC')
+      .getMany();
   }
 
   public async show(id: number): Promise<Collaborator> {
@@ -44,5 +47,16 @@ export class CollaboratorService {
     if (!collaborator) throw new NotFoundException();
 
     this.collaboratorRepository.delete(id);
+  }
+
+  public async patchValidation(id: number): Promise<void> {
+    const collaborator = await this.collaboratorRepository.findOne(id);
+
+    if (!collaborator) throw new NotFoundException();
+
+    collaborator.validation = Validation.validated;
+    collaborator.validationDate = new Date();
+
+    await this.collaboratorRepository.save(collaborator);
   }
 }

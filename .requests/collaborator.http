@@ -16,6 +16,7 @@ POST http://localhost:3000/collaborators
 Content-Type: application/json
 
 {
+    "id": 2,
     "name": "misael x y",
     "email": "misael@email.com",
     "cpf": "156.371.801-33",
@@ -34,3 +35,7 @@ GET http://localhost:3000/collaborators/1
 // DELETA UM COLABORADOR
 ########
 DELETE http://localhost:3000/collaborators/1
+
+// VALIDA UM COLABORADOR
+########
+PATCH  http://localhost:3000/collaborators/1

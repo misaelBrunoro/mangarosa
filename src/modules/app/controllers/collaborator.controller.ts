@@ -5,6 +5,7 @@ import {
   Get,
   Param,
   ParseIntPipe,
+  Patch,
   Post,
   ValidationPipe,
 } from '@nestjs/common';
@@ -56,5 +57,14 @@ export class CollaboratorController {
   @ApiOperation({ summary: '' })
   public async destroy(@Param('id', ParseIntPipe) id: number): Promise<void> {
     return this.collaboratorService.destroy(id);
+  }
+
+  @Patch(':id')
+  @ApiNoContentResponse()
+  @ApiOperation({ summary: '' })
+  public async patchValidation(
+    @Param('id', ParseIntPipe) id: number,
+  ): Promise<void> {
+    return this.collaboratorService.patchValidation(id);
   }
 }
