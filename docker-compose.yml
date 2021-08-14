@@ -3,7 +3,7 @@ version: '2'
 services:
   web:
     container_name: mangarosa-api
-    build: docker/dev
+    build: docker
     ports:
       - "3000:3000"
       - "9229:9229"

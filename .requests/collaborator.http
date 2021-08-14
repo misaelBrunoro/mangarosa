@@ -1,0 +1,41 @@
+// SALVA COLABORADORES
+POST http://localhost:3000/collaborators
+Content-Type: application/json
+
+{
+    "name": "misael",
+    "email": "misael@email.com",
+    "cpf": "156.371.807-33",
+    "phone": "27998155955",
+    "knowledge": ["TypeScript", "Database", "DevOps"]
+}
+
+// EDITA COLABORADORES
+#######
+POST http://localhost:3000/collaborators
+Content-Type: application/json
+
+{
+    "id": 2,
+    "name": "misael x y",
+    "email": "misael@email.com",
+    "cpf": "156.371.801-33",
+    "phone": "27998155951",
+    "knowledge": ["NodeJS", "Database", "DevOps"]
+}
+
+// BUSCA TODOS OS COLABORADORES
+########
+GET http://localhost:3000/collaborators
+
+// BUSCA UM COLABORADOR ESPECIFICO
+########
+GET http://localhost:3000/collaborators/1
+
+// DELETA UM COLABORADOR
+########
+DELETE http://localhost:3000/collaborators/1
+
+// VALIDA UM COLABORADOR
+########
+PATCH  http://localhost:3000/collaborators/1
