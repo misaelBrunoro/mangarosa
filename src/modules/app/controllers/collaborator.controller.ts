@@ -26,21 +26,21 @@ export class CollaboratorController {
 
   @Get(':id')
   @ApiOkResponse({ type: Collaborator })
-  @ApiOperation({ summary: '' })
+  @ApiOperation({ summary: 'show a collaborator by id' })
   public show(@Param('id', ParseIntPipe) id: number): Promise<Collaborator> {
     return this.collaboratorService.show(id);
   }
 
   @Get()
   @ApiOkResponse({ type: [Collaborator] })
-  @ApiOperation({ summary: '' })
+  @ApiOperation({ summary: 'show all collaborators' })
   public async index(): Promise<Collaborator[]> {
     return this.collaboratorService.index();
   }
 
   @Post()
   @ApiOkResponse({ type: Collaborator })
-  @ApiOperation({ summary: '' })
+  @ApiOperation({ summary: 'save end edit a collaborator' })
   public async store(
     @Body(
       new ValidationPipe({
@@ -54,14 +54,14 @@ export class CollaboratorController {
 
   @Delete(':id')
   @ApiNoContentResponse()
-  @ApiOperation({ summary: '' })
+  @ApiOperation({ summary: 'delete a collaborator by id' })
   public async destroy(@Param('id', ParseIntPipe) id: number): Promise<void> {
     return this.collaboratorService.destroy(id);
   }
 
   @Patch(':id')
   @ApiNoContentResponse()
-  @ApiOperation({ summary: '' })
+  @ApiOperation({ summary: 'edit validation and validationDate by id' })
   public async patchValidation(
     @Param('id', ParseIntPipe) id: number,
   ): Promise<void> {
